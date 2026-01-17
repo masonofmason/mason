@@ -1,43 +1,37 @@
-class LottoGenerator extends HTMLElement {
+class DinnerGenerator extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
             <style>
-                .lotto-container {
+                .dinner-container {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    height: 100vh;
-                    background-color: #f0f0f0;
+                    background-color: #fff;
+                    padding: 2rem;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
                 }
 
-                .lotto-header {
+                .dinner-header {
                     font-size: 2rem;
                     margin-bottom: 1rem;
                 }
 
-                .lotto-numbers {
-                    display: flex;
-                    margin-bottom: 2rem;
-                }
-
-                .lotto-number {
+                .dinner-result {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50%;
-                    background-color: #fff;
-                    margin: 0 0.5rem;
+                    min-height: 50px;
+                    margin-bottom: 2rem;
                     font-size: 1.5rem;
                     font-weight: bold;
                     color: #333;
                 }
 
-                .lotto-button {
+                .dinner-button {
                     padding: 0.5rem 1rem;
                     font-size: 1rem;
                     cursor: pointer;
@@ -47,41 +41,25 @@ class LottoGenerator extends HTMLElement {
                     color: white;
                 }
             </style>
-            <div class="lotto-container">
-                <h1 class="lotto-header">Lotto Number Generator</h1>
-                <div class="lotto-numbers">
-                    <div class="lotto-number"></div>
-                    <div class="lotto-number"></div>
-                    <div class="lotto-number"></div>
-                    <div class="lotto-number"></div>
-                    <div class="lotto-number"></div>
-                    <div class="lotto-number"></div>
-                </div>
-                <button class="lotto-button">Generate Numbers</button>
+            <div class="dinner-container">
+                <h1 class="dinner-header">Dinner Menu Generator</h1>
+                <div class="dinner-result"></div>
+                <button class="dinner-button">Generate Menu</button>
             </div>
         `;
 
-        this.generateNumbers = this.generateNumbers.bind(this);
-        this.shadowRoot.querySelector('.lotto-button').addEventListener('click', this.generateNumbers);
+        this.generateMenu = this.generateMenu.bind(this);
+        this.shadowRoot.querySelector('.dinner-button').addEventListener('click', this.generateMenu);
     }
 
-    generateNumbers() {
-        const numbers = new Set();
-        while (numbers.size < 6) {
-            numbers.add(Math.floor(Math.random() * 45) + 1);
-        }
+    generateMenu() {
+        const menus = ['Pizza', 'Burger', 'Sushi', 'Pasta', 'Tacos', 'Salad', 'Steak', 'Fried Chicken'];
+        const randomIndex = Math.floor(Math.random() * menus.length);
+        const selectedMenu = menus[randomIndex];
 
-        const numberElements = this.shadowRoot.querySelectorAll('.lotto-number');
-        const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
-        sortedNumbers.forEach((number, index) => {
-            numberElements[index].textContent = number;
-        });
+        const resultElement = this.shadowRoot.querySelector('.dinner-result');
+        resultElement.textContent = selectedMenu;
     }
 }
 
-customElements.define('lotto-generator', LottoGenerator);
-
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-});
+customElements.define('dinner-generator', DinnerGenerator);
