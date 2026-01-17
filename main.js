@@ -255,7 +255,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/jjajangmyeon',
                 difficulty: 'Medium',
                 prepTime: '50 mins',
-                imageUrl: 'https://i.namu.wiki/i/N5z4a0gOM2IqcJurnrk6R4G1JElA3KizKjfEYuL3WRnStVS16TaMiX2sWk_2UEHhWkz6CM04dJvey3JZkRAGuJENbvk4feTXZCgLkppHHwvkgpAjnbZHiDZ6XRTcDVPXGdg-jR9QYL3iKNRzIQ71w.webp'
+                imageUrl: 'https://i.namu.wiki/i/N5z4a0gOM2IqcJurnrk6R4G1JElA3KizKjfEYuL3WRnStVS16TaMiX2sWk_2UEHhWkz6CM04dJvey3JZkRAGuJENbvk4feTXZCgLkppHHwvkgpAjnbZHiDZ6XRTcDVPXG1dg-jR9QYL3iKNRzIQ71w.webp'
             }
         ];
     
