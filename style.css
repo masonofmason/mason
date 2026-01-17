@@ -217,6 +217,11 @@ body.dark-mode .container form textarea {
     gap: 2rem;
 }
 
+dinner-generator {
+    display: block; /* Ensure the custom element renders correctly */
+}
+
+
 .post-summary {
     background-color: var(--card-background-light);
     padding: 1.5rem;
