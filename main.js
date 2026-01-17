@@ -13,11 +13,21 @@ class DinnerGenerator extends HTMLElement {
                     padding: 2rem;
                     border-radius: 10px;
                     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    transition: background-color 0.3s;
+                }
+
+                :host-context(body.dark-mode) .dinner-container {
+                    background-color: #444;
                 }
 
                 .dinner-header {
                     font-size: 2rem;
                     margin-bottom: 1rem;
+                    color: #333;
+                }
+
+                :host-context(body.dark-mode) .dinner-header {
+                    color: #fff;
                 }
 
                 .dinner-result {
@@ -29,6 +39,10 @@ class DinnerGenerator extends HTMLElement {
                     font-size: 1.5rem;
                     font-weight: bold;
                     color: #333;
+                }
+
+                 :host-context(body.dark-mode) .dinner-result {
+                    color: #fff;
                 }
 
                 .dinner-button {
@@ -63,3 +77,8 @@ class DinnerGenerator extends HTMLElement {
 }
 
 customElements.define('dinner-generator', DinnerGenerator);
+
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
