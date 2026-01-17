@@ -156,7 +156,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/tteokbokki',
                 difficulty: 'Easy',
                 prepTime: '25 mins',
-                imageUrl: 'https://i.namu.wiki/i/_KfdJexo78gl3KKFLnshosuKj-Q3FpgHiaAesHBorENVZQ6x6bNLoSVV7VsVLm7dt197VBefToqZ8MdWRrlAItmG78vuFwLEMEZ66IR67IEigyS0NfNOO15Gt-v5P-t6pVCVCptbT96buau1AzFJOvA.webp'
+                imageUrl: 'https://i.namu.wiki/i/_KfdJexo78gl3KKFLnshosuKj-Q3FpgHiaAesHBorENVZQ6x6bNLoSVjVsVLm7dt197VBefToqZ8MdWRrlAItmG78vuFwLEMEZ66IR67IEigyS0NfNOO15Gt-v5P-t6pVCVCptbT96buau1AzFJOvA.webp'
             },
             {
                 name: 'Samgyeopsal (삼겹살)',
@@ -228,7 +228,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/gimbap',
                 difficulty: 'Medium',
                 prepTime: '1 hour',
-                imageUrl: 'https://i.namu.wiki/i/5M8yoxX724KMMhfjeoFKHzxNaLTUZzhCLReItwgIXzDLL119wpuFfz8CsbYod94kyGdLlOtXuCvEKwh2ZTJAAytMK6n1ni-ORiVgA2hSetLp8HSsP_0DcBNjq-51zDi-hySObfdARNX1gf0HXQo7gQ.webp'
+                imageUrl: 'https://i.namu.wiki/i/5M8yoxX724KMMhfjeoFKHzxNaLTUZzhCLReItwgIXzDLL119wpuWfz8CsbYod94kyGdLlOtXuCvEKwh2ZTJAAytMK6n1ni-ORiVgA2hSetLp8HSsP_0DcBNjq-51zDi-hySObfdARNX1gf0HXQo7gQ.webp'
             },
             {
                 name: 'Yukgaejang (육개장)',
