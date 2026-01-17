@@ -106,6 +106,11 @@ class DinnerGenerator extends HTMLElement {
         this.shadowRoot.querySelector('.dinner-button').addEventListener('click', this.generateMenu);
     }
 
+    connectedCallback() {
+        // Automatically generate a menu item when the element is connected to the DOM
+        this.generateMenu();
+    }
+
     generateMenu() {
         const menus = [
             // --- Detailed Korean Menu Items (15) ---
