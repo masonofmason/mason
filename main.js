@@ -110,7 +110,6 @@ class DinnerGenerator extends HTMLElement {
 
     connectedCallback() {
         // Automatically generate a menu item when the element is connected to the DOM
-        this.generateMenu();
     }
 
     generateMenu() {
