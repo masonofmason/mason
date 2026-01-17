@@ -20,7 +20,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Vertically center content */
     min-height: 100vh;
     box-sizing: border-box;
     transition: background-color 0.3s, color 0.3s;
@@ -28,9 +27,10 @@ body {
     padding: 1rem; /* Added padding */
 }
 
-html, body {
-    height: 100%; /* Ensure full height for flexbox */
+html {
+    box-sizing: border-box; /* Apply box-sizing globally */
 }
+
 
 body.dark-mode {
     background-color: var(--background-dark);
