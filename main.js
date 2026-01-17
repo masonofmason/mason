@@ -14,7 +14,7 @@ class DinnerGenerator extends HTMLElement {
                     border-radius: 10px;
                     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
                     transition: background-color 0.3s;
-                    max-width: 600px; /* Limit width for better readability */
+                    width: 100%; /* Make it fully responsive */
                     margin: 2rem auto; /* Center the container */
                     text-align: center;
                     min-height: 400px; /* Ensure visible height */

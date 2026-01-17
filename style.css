@@ -220,7 +220,6 @@ body.dark-mode .container form textarea {
 dinner-generator {
     display: block; /* Ensure the custom element renders correctly */
     flex-grow: 1; /* Allow it to take up available space */
-    background-color: lightcoral; /* For debugging visibility */
 }
 
 
