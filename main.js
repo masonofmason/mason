@@ -96,9 +96,9 @@ class DinnerGenerator extends HTMLElement {
                 }
             </style>
             <div class="dinner-container">
-                <h1 class="dinner-header">Dinner Menu Generator</h1>
-                <div class="dinner-result">Click 'Generate Menu' to find your next delicious dinner idea!</div>
-                <button class="dinner-button">Generate Menu</button>
+                <h1 class="dinner-header">미니시민의 오늘 저녁 뭐 먹지?</h1>
+                <div class="dinner-result">버튼을 클릭하여 다음 맛있는 저녁 식사 아이디어를 찾아보세요!</div>
+                <button class="dinner-button">메뉴 생성</button>
             </div>
         `;
 
