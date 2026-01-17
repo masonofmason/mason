@@ -17,7 +17,7 @@ class DinnerGenerator extends HTMLElement {
                     width: 100%; /* Make it fully responsive */
                     margin: 2rem auto; /* Center the container */
                     text-align: center;
-                    min-height: 400px; /* Ensure visible height */
+                    height: auto; /* Ensure visible height */
                 }
 
                 :host-context(body.dark-mode) .dinner-container {
@@ -35,7 +35,7 @@ class DinnerGenerator extends HTMLElement {
                 }
 
                 .dinner-result {
-                    min-height: 150px; /* Increased height to accommodate more text */
+                    height: auto; /* Increased height to accommodate more text */
                     margin-bottom: 2rem;
                     font-size: 1rem; /* Smaller font for details */
                     color: #333;
@@ -45,6 +45,7 @@ class DinnerGenerator extends HTMLElement {
                     border-radius: 8px;
                     background-color: #f9f9f9;
                     line-height: 1.5;
+                    word-break: break-word;
                 }
 
                 :host-context(body.dark-mode) .dinner-result {
