@@ -17,6 +17,7 @@ class DinnerGenerator extends HTMLElement {
                     max-width: 600px; /* Limit width for better readability */
                     margin: 2rem auto; /* Center the container */
                     text-align: center;
+                    min-height: 400px; /* Ensure visible height */
                 }
 
                 :host-context(body.dark-mode) .dinner-container {
