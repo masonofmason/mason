@@ -20,10 +20,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* Vertically center content */
     min-height: 100vh;
     box-sizing: border-box;
     transition: background-color 0.3s, color 0.3s;
     line-height: 1.6;
+    padding: 1rem; /* Added padding */
+}
+
+html, body {
+    height: 100%; /* Ensure full height for flexbox */
 }
 
 body.dark-mode {
@@ -38,6 +44,7 @@ body.dark-mode {
     padding: 1rem 1.5rem; /* Adjusted padding */
     box-sizing: border-box;
 }
+
 
 #theme-toggle {
     position: fixed;
