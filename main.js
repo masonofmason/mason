@@ -113,6 +113,13 @@ class DinnerGenerator extends HTMLElement {
     }
 
     generateMenu() {
+        // --- Image Sourcing Note ---
+        // Due to limitations in programmatically searching for and directly linking specific food images,
+        // generic placeholder images from Picsum Photos are currently used for reliability.
+        // For accurate, food-specific images, it is recommended to:
+        // 1. Find high-quality, static image URLs for each dish (e.g., from personal hosting, Unsplash direct links, or Wikimedia Commons).
+        // 2. Replace the 'imageUrl' values below with those specific image URLs.
+        // ---------------------------
         const menus = [
             // --- Detailed Korean Menu Items (15) ---
             {
@@ -122,7 +129,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/bibimbap',
                 difficulty: 'Medium',
                 prepTime: '45 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?bibimbap,korean,food'
+                imageUrl: 'https://source.unsplash.com/500x300/?bibimbap,korean,mixed-rice,healthy-food'
             },
             {
                 name: 'Bulgogi (불고기)',
@@ -131,7 +138,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/bulgogi',
                 difficulty: 'Easy',
                 prepTime: '30 mins (plus marinating time)',
-                imageUrl: 'https://source.unsplash.com/500x300/?bulgogi,korean,bbq'
+                imageUrl: 'https://source.unsplash.com/500x300/?bulgogi,korean-bbq,grilled-meat'
             },
             {
                 name: 'Kimchi Jjigae (김치찌개)',
@@ -140,7 +147,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/kimchi-jjigae',
                 difficulty: 'Medium',
                 prepTime: '35 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?kimchi-jjigae,korean,stew'
+                imageUrl: 'https://source.unsplash.com/500x300/?kimchi-jjigae,korean-stew,spicy-soup'
             },
             {
                 name: 'Tteokbokki (떡볶이)',
@@ -149,7 +156,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/tteokbokki',
                 difficulty: 'Easy',
                 prepTime: '25 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?tteokbokki,korean,streetfood'
+                imageUrl: 'https://source.unsplash.com/500x300/?tteokbokki,korean-street-food,rice-cakes'
             },
             {
                 name: 'Samgyeopsal (삼겹살)',
@@ -158,7 +165,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/samgyeopsal-gui',
                 difficulty: 'Easy',
                 prepTime: '20 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?samgyeopsal,korean,porkbelly,bbq'
+                imageUrl: 'https://source.unsplash.com/500x300/?samgyeopsal,korean-pork-belly,grilled'
             },
             {
                 name: 'Japchae (잡채)',
@@ -167,7 +174,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/japchae',
                 difficulty: 'Medium',
                 prepTime: '50 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?japchae,korean,noodles'
+                imageUrl: 'https://source.unsplash.com/500x300/?japchae,korean-noodles,glass-noodles'
             },
             {
                 name: 'Kimchi Bokkeumbap (김치볶음밥)',
@@ -176,7 +183,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/kimchi-bokkeumbap',
                 difficulty: 'Easy',
                 prepTime: '20 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?kimchi-bokkeumbap,korean,fried-rice'
+                imageUrl: 'https://source.unsplash.com/500x300/?kimchi-bokkeumbap,korean-fried-rice,egg'
             },
             {
                 name: 'Sundubu Jjigae (순두부찌개)',
@@ -185,7 +192,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/sundubu-jjigae',
                 difficulty: 'Medium',
                 prepTime: '30 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?sundubu-jjigae,korean,soft-tofu-stew'
+                imageUrl: 'https://source.unsplash.com/500x300/?sundubu-jjigae,korean-soft-tofu-stew,spicy'
             },
             {
                 name: 'Haemul Pajeon (해물파전)',
@@ -194,7 +201,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/haemul-pajeon',
                 difficulty: 'Medium',
                 prepTime: '40 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?haemul-pajeon,korean,seafood,pancake'
+                imageUrl: 'https://source.unsplash.com/500x300/?haemul-pajeon,korean-seafood-pancake,crispy'
             },
             {
                 name: 'Gyeran Mari (계란말이)',
@@ -203,7 +210,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/gyeran-mari',
                 difficulty: 'Easy',
                 prepTime: '15 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?gyeran-mari,korean,omelette'
+                imageUrl: 'https://source.unsplash.com/500x300/?gyeran-mari,korean-rolled-omelette,egg-dish'
             },
             {
                 name: 'Kimchi Jeon (김치전)',
@@ -212,7 +219,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/kimchijeon',
                 difficulty: 'Easy',
                 prepTime: '25 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?kimchi-jeon,korean,pancake'
+                imageUrl: 'https://source.unsplash.com/500x300/?kimchi-jeon,korean-pancake,savory'
             },
             {
                 name: 'Gimbap (김밥)',
@@ -221,7 +228,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/gimbap',
                 difficulty: 'Medium',
                 prepTime: '1 hour',
-                imageUrl: 'https://source.unsplash.com/500x300/?gimbap,korean,sushi,roll'
+                imageUrl: 'https://source.unsplash.com/500x300/?gimbap,korean-sushi,seaweed-roll'
             },
             {
                 name: 'Yukgaejang (육개장)',
@@ -230,7 +237,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/yukgaejang',
                 difficulty: 'Hard',
                 prepTime: '2 hours+',
-                imageUrl: 'https://source.unsplash.com/500x300/?yukgaejang,korean,beef,soup'
+                imageUrl: 'https://source.unsplash.com/500x300/?yukgaejang,korean-spicy-beef-soup,hearty'
             },
             {
                 name: 'Galbi (갈비)',
@@ -239,7 +246,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/la-galbi',
                 difficulty: 'Medium',
                 prepTime: '40 mins (plus marinating time)',
-                imageUrl: 'https://source.unsplash.com/500x300/?galbi,korean,ribs,bbq'
+                imageUrl: 'https://source.unsplash.com/500x300/?galbi,korean-short-ribs,marinated-meat'
             },
             {
                 name: 'Jjajangmyeon (짜장면)',
@@ -248,7 +255,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/jjajangmyeon',
                 difficulty: 'Medium',
                 prepTime: '50 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?jjajangmyeon,korean,noodles,blackbeancake'
+                imageUrl: 'https://source.unsplash.com/500x300/?jjajangmyeon,korean-black-bean-noodles,chinese-korean'
             }
         ];
     
