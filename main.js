@@ -241,20 +241,20 @@ class DinnerGenerator extends HTMLElement {
                 prepTime: '40 mins (plus marinating time)',
                 imageUrl: 'https://source.unsplash.com/500x300/?korean-galbi'
             },
-            {
-                name: 'Jjajangmyeon (짜장면)',
-                description: 'A popular Korean-Chinese noodle dish topped with a thick sauce made from chunjang (black bean paste), diced pork, and vegetables.',
-                ingredients: 'Noodles, chunjang, pork belly, onion, zucchini, cabbage, cucumber, soy sauce.',
-                recipeLink: 'https://www.maangchi.com/recipe/jjajangmyeon',
-                difficulty: 'Medium',
-                prepTime: '50 mins',
-                imageUrl: 'https://source.unsplash.com/500x300/?jjajangmyeon'
-            },
-
-                ];
-
-        
-
-        customElements.define('dinner-generator', DinnerGenerator);
-
+                        {
+                            name: 'Jjajangmyeon (짜장면)',
+                            description: 'A popular Korean-Chinese noodle dish topped with a thick sauce made from chunjang (black bean paste), diced pork, and vegetables.',
+                            ingredients: 'Noodles, chunjang, pork belly, onion, zucchini, cabbage, cucumber, soy sauce.',
+                            recipeLink: 'https://www.maangchi.com/recipe/jjajangmyeon',
+                            difficulty: 'Medium',
+                            prepTime: '50 mins',
+                            imageUrl: 'https://source.unsplash.com/500x300/?jjajangmyeon'
+                        },
+            
+                    ];
+            
+                    const randomIndex = Math.floor(Math.random() * menus.length);
+                    const selectedMenu = menus[randomIndex];
+                            customElements.define('dinner-generator', DinnerGenerator);
+                
         
