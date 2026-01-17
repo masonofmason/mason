@@ -241,20 +241,33 @@ class DinnerGenerator extends HTMLElement {
                 prepTime: '40 mins (plus marinating time)',
                 imageUrl: 'https://source.unsplash.com/500x300/?korean-galbi'
             },
-                        {
-                            name: 'Jjajangmyeon (짜장면)',
-                            description: 'A popular Korean-Chinese noodle dish topped with a thick sauce made from chunjang (black bean paste), diced pork, and vegetables.',
-                            ingredients: 'Noodles, chunjang, pork belly, onion, zucchini, cabbage, cucumber, soy sauce.',
-                            recipeLink: 'https://www.maangchi.com/recipe/jjajangmyeon',
-                            difficulty: 'Medium',
-                            prepTime: '50 mins',
-                            imageUrl: 'https://source.unsplash.com/500x300/?jjajangmyeon'
-                        },
-            
-                    ];
-            
-                    const randomIndex = Math.floor(Math.random() * menus.length);
-                    const selectedMenu = menus[randomIndex];
-                            customElements.define('dinner-generator', DinnerGenerator);
-                
-        
+            {
+                name: 'Jjajangmyeon (짜장면)',
+                description: 'A popular Korean-Chinese noodle dish topped with a thick sauce made from chunjang (black bean paste), diced pork, and vegetables.',
+                ingredients: 'Noodles, chunjang, pork belly, onion, zucchini, cabbage, cucumber, soy sauce.',
+                recipeLink: 'https://www.maangchi.com/recipe/jjajangmyeon',
+                difficulty: 'Medium',
+                prepTime: '50 mins',
+                imageUrl: 'https://source.unsplash.com/500x300/?jjajangmyeon'
+            }
+        ];
+    
+        const randomIndex = Math.floor(Math.random() * menus.length);
+        const selectedMenu = menus[randomIndex];
+    
+        const resultDiv = this.shadowRoot.querySelector('.dinner-result');
+        if (resultDiv) {
+            resultDiv.innerHTML = `
+                <h3>${selectedMenu.name}</h3>
+                ${selectedMenu.imageUrl ? `<img src="${selectedMenu.imageUrl}" alt="${selectedMenu.name}">` : ''}
+                <p><strong>설명:</strong> ${selectedMenu.description}</p>
+                <p><strong>주요 재료:</strong> ${selectedMenu.ingredients}</p>
+                <p><strong>난이도:</strong> ${selectedMenu.difficulty}</p>
+                <p><strong>준비 시간:</strong> ${selectedMenu.prepTime}</p>
+                ${selectedMenu.recipeLink ? `<p><a href="${selectedMenu.recipeLink}" target="_blank">레시피 보기</a></p>` : ''}
+            `;
+        }
+    }
+}
+
+customElements.define('dinner-generator', DinnerGenerator);
