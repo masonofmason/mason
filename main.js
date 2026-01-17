@@ -115,7 +115,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.allrecipes.com/recipe/228224/authentic-pizza-margherita/',
                 difficulty: 'Medium',
                 prepTime: '45 mins',
-                imageUrl: 'https://loremflickr.com/500/300/pizza,margherita?random=1'
+                imageUrl: 'https://source.unsplash.com/500x300/?margherita-pizza'
             },
             {
                 name: 'Gourmet Beef Burger',
@@ -124,7 +124,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.seriouseats.com/best-grilled-hamburgers-recipe',
                 difficulty: 'Easy',
                 prepTime: '30 mins',
-                imageUrl: 'https://loremflickr.com/500/300/burger?random=2'
+                imageUrl: 'https://source.unsplash.com/500x300/?gourmet-burger'
             },
             {
                 name: 'Assorted Sushi Platter',
@@ -133,7 +133,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.sushiencyclopedia.com/sushi-recipes/',
                 difficulty: 'Hard',
                 prepTime: '1 hour 30 mins',
-                imageUrl: 'https://loremflickr.com/500/300/sushi?random=3'
+                imageUrl: 'https://source.unsplash.com/500x300/?sushi-platter'
             },
             {
                 name: 'Creamy Carbonara Pasta',
@@ -142,7 +142,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.recipetineats.com/carbonara/',
                 difficulty: 'Medium',
                 prepTime: '25 mins',
-                imageUrl: 'https://loremflickr.com/500/300/pasta,carbonara?random=4'
+                imageUrl: 'https://source.unsplash.com/500x300/?carbonara-pasta'
             },
             {
                 name: 'Spicy Chicken Tacos',
@@ -151,7 +151,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.delish.com/cooking/recipe-ideas/a23277981/best-chicken-tacos-recipe/',
                 difficulty: 'Easy',
                 prepTime: '35 mins',
-                imageUrl: 'https://loremflickr.com/500/300/tacos,chicken?random=5'
+                imageUrl: 'https://source.unsplash.com/500x300/?chicken-tacos'
             },
             {
                 name: 'Mediterranean Quinoa Salad',
@@ -160,7 +160,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.budgetbytes.com/mediterranean-quinoa-salad/',
                 difficulty: 'Easy',
                 prepTime: '20 mins',
-                imageUrl: 'https://loremflickr.com/500/300/salad,quinoa?random=6'
+                imageUrl: 'https://source.unsplash.com/500x300/?quinoa-salad'
             },
             {
                 name: 'Pan-Seared Steak with Garlic Butter',
@@ -169,7 +169,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.jessicagavin.com/pan-seared-steak-garlic-butter/',
                 difficulty: 'Medium',
                 prepTime: '20 mins',
-                imageUrl: 'https://loremflickr.com/500/300/steak?random=7'
+                imageUrl: 'https://source.unsplash.com/500x300/?pan-seared-steak'
             },
             {
                 name: 'Crispy Southern Fried Chicken',
@@ -178,7 +178,84 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.foodnetwork.com/recipes/paula-deen/southern-fried-chicken-recipe-2012979',
                 difficulty: 'Hard',
                 prepTime: '1 hour',
-                imageUrl: 'https://loremflickr.com/500/300/fried,chicken?random=8'
+                imageUrl: 'https://source.unsplash.com/500x300/?fried-chicken'
+            },
+            // --- New Diverse Cuisines ---
+            // Asian
+            {
+                name: 'Thai Green Curry',
+                description: 'Aromatic and spicy Thai curry with coconut milk, green curry paste, chicken, and assorted vegetables. Served with jasmine rice.',
+                ingredients: 'Coconut milk, green curry paste, chicken breast, bell peppers, bamboo shoots, basil leaves, fish sauce, jasmine rice.',
+                recipeLink: 'https://www.allrecipes.com/recipe/228189/thai-green-curry/',
+                difficulty: 'Medium',
+                prepTime: '40 mins',
+                imageUrl: 'https://source.unsplash.com/500x300/?thai-green-curry'
+            },
+            {
+                name: 'Indian Chicken Tikka Masala',
+                description: 'Popular Indian dish with tender chicken pieces marinated in yogurt and spices, then served in a creamy, spiced tomato sauce.',
+                ingredients: 'Chicken, yogurt, ginger-garlic paste, garam masala, turmeric, cumin, coriander, tomatoes, cream, rice.',
+                recipeLink: 'https://www.indianhealthyrecipes.com/chicken-tikka-masala-recipe-restaurant-style/',
+                difficulty: 'Medium',
+                prepTime: '1 hour 15 mins',
+                imageUrl: 'https://source.unsplash.com/500x300/?chicken-tikka-masala'
+            },
+            {
+                name: 'Japanese Ramen',
+                description: 'A hearty bowl of Japanese noodle soup with a rich broth, tender pork (chashu), soft-boiled egg, nori, and green onions.',
+                ingredients: 'Ramen noodles, pork belly, eggs, chicken/pork broth, soy sauce, mirin, green onions, nori.',
+                recipeLink: 'https://www.seriouseats.com/rich-and-creamy-tonkotsu-ramen-broth-recipe',
+                difficulty: 'Hard',
+                prepTime: '2 hours+',
+                imageUrl: 'https://source.unsplash.com/500x300/?japanese-ramen'
+            },
+            // European (beyond Italy)
+            {
+                name: 'French Coq au Vin',
+                description: 'Classic French stew with chicken braised in red wine (typically Burgundy), lardons, mushrooms, and onions.',
+                ingredients: 'Chicken pieces, red wine, bacon lardons, mushrooms, pearl onions, garlic, thyme, bay leaf.',
+                recipeLink: 'https://www.juliachildfoundation.org/recipes/coq-au-vin/',
+                difficulty: 'Hard',
+                prepTime: '1 hour 45 mins',
+                imageUrl: 'https://source.unsplash.com/500x300/?coq-au-vin'
+            },
+            {
+                name: 'German Schnitzel with Potato Salad',
+                description: 'Thinly pounded, breaded, and pan-fried cutlet (usually pork or veal), served with a tangy German potato salad.',
+                ingredients: 'Pork/veal cutlets, breadcrumbs, eggs, flour, potatoes, vinegar, onion, bacon.',
+                recipeLink: 'https://dinnerthendessert.com/pork-schnitzel/',
+                difficulty: 'Medium',
+                prepTime: '50 mins',
+                imageUrl: 'https://source.unsplash.com/500x300/?schnitzel'
+            },
+            // North American (more distinct)
+            {
+                name: 'Classic American Chili',
+                description: 'Hearty and flavorful beef chili, slow-cooked with beans, tomatoes, and a blend of chili spices. Perfect comfort food.',
+                ingredients: 'Ground beef, kidney beans, crushed tomatoes, chili powder, cumin, onion, garlic.',
+                recipeLink: 'https://www.allrecipes.com/recipe/70003/beef-chili/',
+                difficulty: 'Easy',
+                prepTime: '1 hour 30 mins',
+                imageUrl: 'https://source.unsplash.com/500x300/?beef-chili'
+            },
+            // South American
+            {
+                name: 'Brazilian Feijoada',
+                description: 'A rich, hearty stew of black beans with various cuts of pork and beef, traditionally served with rice, collard greens, and farofa.',
+                ingredients: 'Black beans, pork ribs, sausage, beef, rice, collard greens, farofa.',
+                recipeLink: 'https://braziliankitchenabroad.com/feijoada-recipe-the-ultimate-brazilian-black-bean-stew/',
+                difficulty: 'Hard',
+                prepTime: '3 hours+',
+                imageUrl: 'https://source.unsplash.com/500x300/?feijoada'
+            },
+            {
+                name: 'Peruvian Lomo Saltado',
+                description: 'A flavorful Peruvian stir-fry that combines marinated strips of sirloin with onions, tomatoes, and French fries, served with rice.',
+                ingredients: 'Beef sirloin, red onion, tomatoes, Aji Amarillo, soy sauce, vinegar, French fries, rice.',
+                recipeLink: 'https://www.limablog.com/lomo-saltado-recipe/',
+                difficulty: 'Medium',
+                prepTime: '45 mins',
+                imageUrl: 'https://source.unsplash.com/500x300/?lomo-saltado'
             }
         ];
 
