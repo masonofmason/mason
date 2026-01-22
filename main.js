@@ -75,8 +75,9 @@ class DinnerGenerator extends HTMLElement {
                 }
 
                 .dinner-result img {
-                    max-width: 100%;
-                    height: auto;
+                    width: 100%;
+                    height: 250px;
+                    object-fit: cover;
                     border-radius: 5px;
                     margin-bottom: 1rem;
                     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
