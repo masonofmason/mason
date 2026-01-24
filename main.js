@@ -243,7 +243,7 @@ class DinnerGenerator extends HTMLElement {
             {
                 name: 'Galbi (갈비)',
                 description: '달콤하고 savory한 소스에 재워 굽는 한국식 갈비로, 주로 소갈비 또는 돼지갈비입니다.',
-                ingredients: '소갈비, 간장, 설탕, 참기름, 대파, 배.',
+                ingredients: '소갈비, 간장, 설탕, 마늘, 참기름, 대파, 배.',
                 recipeLink: 'https://www.maangchi.com/recipe/la-galbi',
                 difficulty: '중간',
                 prepTime: '40분 (재움 시간 포함)',
@@ -279,80 +279,3 @@ class DinnerGenerator extends HTMLElement {
 }
 
 customElements.define('dinner-generator', DinnerGenerator);
-
-// Social share functions
-function shareKakao() {
-    // Kakao Share requires Kakao SDK to be initialized.
-    // Assuming Kakao SDK is loaded and initialized (e.g., in index.html head)
-    if (window.Kakao) {
-        if (!window.Kakao.isInitialized()) {
-            // Replace with your actual Kakao App Key
-            window.Kakao.init('YOUR_KAKAO_APP_KEY');
-        }
-        window.Kakao.Share.sendDefault({
-            objectType: 'feed',
-            content: {
-                title: '미니시민의 오늘 저녁 뭐 먹지?',
-                description: '매일 새로운 저녁 메뉴를 추천해 드립니다!',
-                imageUrl: 'https://mason-td8.pages.dev/images/og_image.jpg', // Replace with your desired image
-                link: {
-                    mobileWebUrl: 'https://mason-td8.pages.dev/',
-                    webUrl: 'https://mason-td8.pages.dev/',
-                },
-            },
-            buttons: [
-                {
-                    title: '웹으로 보기',
-                    link: {
-                        mobileWebUrl: 'https://mason-td8.pages.dev/',
-                        webUrl: 'https://mason-td8.pages.dev/',
-                    },
-                },
-            ],
-        });
-    } else {
-        alert('카카오톡 SDK가 로드되지 않았습니다.');
-    }
-}
-
-// Function for KakaoTalk sharing (for blog pages)
-function shareKakaoBlog(url, title, description, imageUrl) {
-    if (window.Kakao) {
-        if (!window.Kakao.isInitialized()) {
-            window.Kakao.init('YOUR_KAKAO_APP_KEY'); // Replace with your actual Kakao App Key
-        }
-        window.Kakao.Share.sendDefault({
-            objectType: 'feed',
-            content: {
-                title: title,
-                description: description,
-                imageUrl: imageUrl || 'https://mason-td8.pages.dev/images/og_image.jpg', // Default image if not provided
-                link: {
-                    mobileWebUrl: url,
-                    webUrl: url,
-                },
-            },
-            buttons: [
-                {
-                    title: '자세히 보기',
-                    link: {
-                        mobileWebUrl: url,
-                        webUrl: url,
-                    },
-                },
-            ],
-        });
-    } else {
-        alert('카카오톡 SDK가 로드되지 않았습니다.');
-    }
-}
-
-// Function to copy URL to clipboard
-function copyToClipboard(url) {
-    navigator.clipboard.writeText(url).then(function() {
-        alert('링크가 클립보드에 복사되었습니다!');
-    }).catch(function(err) {
-        console.error('클립보드 복사 실패:', err);
-        alert('링크 복사에 실패했습니다.');
-    });
-}
