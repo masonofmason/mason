@@ -289,3 +289,66 @@ function copyToClipboard(url) {
         alert('링크 복사에 실패했습니다.');
     });
 }
+
+// Floating background images logic
+document.addEventListener('DOMContentLoaded', () => {
+    const foodImages = [
+        'images/bibimbap.jpg',
+        'images/bulgogi.jpg',
+        'images/galbi.jpg',
+        'images/Gimbap.jpg',
+        'images/gyeranmari.jpg',
+        'images/HaemulPajeon.jpg',
+        'images/jabchae.jpg',
+        'images/jjajangmyeon.jpg',
+        'images/Kimchi_fried_rice.jpg',
+        'images/kimchijeon.jpg',
+        'images/Kimchijjigae.jpg',
+        'images/Samgyeopsal.jpg',
+        'images/sundubujjiage.jpg',
+        'images/Tteokbokki.jpg',
+        'images/yukgaejang.jpg'
+    ];
+
+    const floatingBackground = document.getElementById('floating-background');
+
+    function getRandom(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    function createFloatingImage() {
+        if (!floatingBackground) return;
+
+        const randomIndex = Math.floor(Math.random() * foodImages.length);
+        const imageUrl = foodImages[randomIndex];
+
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = 'Floating Food Image';
+        
+        // Random size between 100px and 250px
+        const size = getRandom(100, 250); 
+        img.style.width = `${size}px`;
+        img.style.height = 'auto'; // Maintain aspect ratio
+
+        // Random starting position (off-screen or on-screen)
+        img.style.left = `${getRandom(-20, 100)}vw`; 
+        img.style.top = `${getRandom(-20, 100)}vh`;
+
+        // Random animation duration for variety
+        const animationDuration = getRandom(20, 40); // 20 to 40 seconds
+        img.style.animationDuration = `${animationDuration}s, ${animationDuration - 5}s`; // Float duration, then fadeOut duration
+        
+        // Random initial opacity, between 0.3 and 0.6
+        img.style.opacity = getRandom(0.3, 0.6); 
+
+        floatingBackground.appendChild(img);
+
+        img.addEventListener('animationend', () => {
+            img.remove();
+        });
+    }
+
+    // Start creating images at random intervals
+    setInterval(createFloatingImage, getRandom(2000, 5000)); // Every 2 to 5 seconds
+});
