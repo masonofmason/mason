@@ -351,6 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Start creating images at random intervals
-    setInterval(createFloatingImage, getRandom(500, 2500)); // Every 0.5 to 2.5 seconds for more density
+    // Start creating images at random intervals, 3x more frequently
+    setInterval(createFloatingImage, getRandom(160, 830)); // Every 0.16 to 0.83 seconds for 3x density
 });
