@@ -311,8 +311,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'images/yukgaejang.jpg'
     ];
 
-    // IMPORTANT: User needs to provide this image.
-    // Ensure 'images/green_heart.png' exists or update this path.
     const HEART_IMAGE_URL = 'images/green_heart.png'; 
 
     const floatingBackground = document.getElementById('floating-background');
@@ -331,68 +329,58 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = imageUrl;
         img.alt = 'Floating Food Image';
         
-        // Random size between 100px and 250px
         const size = getRandom(100, 250); 
         img.style.width = `${size}px`;
         img.style.height = 'auto'; // Maintain aspect ratio
 
-        // Random starting position (off-screen or on-screen)
         img.style.left = `${getRandom(-20, 100)}vw`; 
         img.style.top = `${getRandom(-20, 100)}vh`;
 
-        // Random animation duration for variety
-        const animationDuration = getRandom(20, 40); // 20 to 40 seconds
-        img.style.animationDuration = `float ${animationDuration}s infinite linear, fadeOut ${animationDuration - 5}s forwards`; 
+        const animationDuration = getRandom(15, 30); // Shorter duration for float animation
+        img.style.animationDuration = `float ${animationDuration}s infinite linear`; // Only float animation
         
-        // Random initial opacity, between 0.3 and 0.6
         img.style.opacity = getRandom(0.3, 0.6); 
-
-        // Allow pointer events for hover effect
-        img.style.pointerEvents = 'auto'; 
+        img.style.pointerEvents = 'none'; // No pointer events as hover is removed
 
         floatingBackground.appendChild(img);
 
-        // Store original src to avoid re-assigning if image is replaced by heart
-        let originalSrc = imageUrl;
-        let originalAlt = img.alt;
-        let removeTimeoutId = null; // To store the timeout ID for removal
+        let heartChangeTimeoutId = null;
+        let disappearTimeoutId = null;
 
-        const handleAnimationEnd = () => {
-            if (!removeTimeoutId) { // Only remove if not in the process of being removed by hover
-                img.remove();
+        // Function to change to heart and then disappear
+        const changeToHeartAndDisappear = () => {
+            if (img.parentNode === floatingBackground) { // Ensure image is still in DOM
+                img.src = HEART_IMAGE_URL;
+                img.alt = 'Heart Image';
+                img.style.animation = ''; // Clear float animation
+                img.style.transition = 'opacity 0.3s ease-out'; // Smooth transition to opaque heart
+                img.style.opacity = '1'; // Make heart prominent
+
+                // Set timeout for heart to disappear
+                disappearTimeoutId = setTimeout(() => {
+                    if (img.parentNode === floatingBackground) {
+                        img.style.opacity = '0'; // Start fade out effect
+                        img.addEventListener('transitionend', () => img.remove(), { once: true });
+                    }
+                }, getRandom(500, 2000)); // Disappear after 0.5 to 2 seconds
+            } else {
+                img.remove(); // If it's already removed, ensure it's fully gone
             }
         };
 
-        img.addEventListener('animationend', handleAnimationEnd);
+        // Set timeout for food image to change to heart
+        heartChangeTimeoutId = setTimeout(changeToHeartAndDisappear, getRandom(5000, 15000)); // Change to heart after 5 to 15 seconds
 
-        img.addEventListener('mouseover', () => {
-            // If already a heart, do nothing
-            if (img.src.includes(HEART_IMAGE_URL)) {
-                return;
+        // Cleanup if image gets removed before heart change (e.g., if it floats out of view)
+        img.addEventListener('animationend', () => {
+            if (img.parentNode === floatingBackground) {
+                clearTimeout(heartChangeTimeoutId);
+                clearTimeout(disappearTimeoutId);
+                img.remove();
             }
-
-            img.src = HEART_IMAGE_URL;
-            img.alt = 'Heart Image';
-            img.style.animation = ''; // Clear animation property
-            img.style.transition = 'opacity 0.2s ease-out'; // Fast fade for heart
-            img.style.opacity = '1'; // Make heart more prominent temporarily
-
-            // Clear any animationend listener that might be pending
-            img.removeEventListener('animationend', handleAnimationEnd);
-
-            removeTimeoutId = setTimeout(() => {
-                if (img.parentNode === floatingBackground) { // Check if image is still in DOM
-                    img.style.opacity = '0'; // Start fade out effect
-                    img.addEventListener('transitionend', () => img.remove(), { once: true });
-                }
-            }, 500); // 0.5 seconds
         });
-
-        // Optional: If mouse leaves before 0.5s and it's a heart, revert or just let it float off
-        // For simplicity, we let the timeout handle removal. If user wants to revert,
-        // more complex logic involving mouseout would be needed.
     }
 
     // Start creating images at random intervals
-    setInterval(createFloatingImage, getRandom(2000, 5000)); // Every 2 to 5 seconds
+    setInterval(createFloatingImage, getRandom(1000, 4000)); // Every 1 to 4 seconds for more density
 });
