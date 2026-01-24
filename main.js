@@ -129,8 +129,7 @@ class DinnerGenerator extends HTMLElement {
                 ingredients: '밥, 다양한 양념 채소 (시금치, 당근, 콩나물, 버섯), 소고기 (선택 사항), 계란 프라이, 고추장, 참기름.',
                 recipeLink: 'https://www.maangchi.com/recipe/bibimbap',
                 difficulty: '중간',
-                prepTime: '45분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=1'
             },
             {
                 name: 'Bulgogi (불고기)',
@@ -139,7 +138,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/bulgogi',
                 difficulty: '쉬움',
                 prepTime: '30분 (재움 시간 포함)',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=2'
             },
             {
                 name: 'Kimchi Jjigae (김치찌개)',
@@ -148,7 +147,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/kimchi-jjigae',
                 difficulty: '중간',
                 prepTime: '35분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=3'
             },
             {
                 name: 'Tteokbokki (떡볶이)',
@@ -157,7 +156,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/tteokbokki',
                 difficulty: '쉬움',
                 prepTime: '25분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=4'
             },
             {
                 name: 'Samgyeopsal (삼겹살)',
@@ -166,7 +165,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/samgyeopsal-gui',
                 difficulty: '쉬움',
                 prepTime: '20분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=5'
             },
             {
                 name: 'Japchae (잡채)',
@@ -175,7 +174,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/japchae',
                 difficulty: '중간',
                 prepTime: '50분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=6'
             },
             {
                 name: 'Kimchi Bokkeumbap (김치볶음밥)',
@@ -184,7 +183,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/kimchi-bokkeumbap',
                 difficulty: '쉬움',
                 prepTime: '20분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=7'
             },
             {
                 name: 'Sundubu Jjigae (순두부찌개)',
@@ -193,7 +192,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/sundubu-jjigae',
                 difficulty: '중간',
                 prepTime: '30분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=8'
             },
             {
                 name: 'Haemul Pajeon (해물파전)',
@@ -202,7 +201,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/haemul-pajeon',
                 difficulty: '중간',
                 prepTime: '40분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=9'
             },
             {
                 name: 'Gyeran Mari (계란말이)',
@@ -211,7 +210,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/gyeran-mari',
                 difficulty: '쉬움',
                 prepTime: '15분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=10'
             },
             {
                 name: 'Kimchi Jeon (김치전)',
@@ -220,7 +219,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/kimchijeon',
                 difficulty: '쉬움',
                 prepTime: '25분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=11'
             },
             {
                 name: 'Gimbap (김밥)',
@@ -229,7 +228,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/gimbap',
                 difficulty: '중간',
                 prepTime: '1시간',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=12'
             },
             {
                 name: 'Yukgaejang (육개장)',
@@ -238,7 +237,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/yukgaejang',
                 difficulty: '어려움',
                 prepTime: '2시간 이상',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=13'
             },
             {
                 name: 'Galbi (갈비)',
@@ -256,7 +255,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/jjajangmyeon',
                 difficulty: '중간',
                 prepTime: '50분',
-                imageUrl: 'https://via.placeholder.com/250'
+                imageUrl: 'https://picsum.photos/400/250?random=14'
             }
         ];
     
