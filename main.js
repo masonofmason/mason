@@ -124,13 +124,7 @@ class DinnerGenerator extends HTMLElement {
         const menus = [
             // --- Detailed Korean Menu Items (15) ---
             {
-                name: 'Bibimbap (비빔밥)',
-                description: '따뜻한 흰쌀밥 위에 나물(볶거나 양념한 채소), 고추장, 간장 또는 된장, 그리고 보통 계란 프라이와 얇게 썬 고기(주로 소고기)를 얹어 비벼 먹는 한국의 대표적인 음식입니다.',
-                ingredients: '밥, 다양한 양념 채소 (시금치, 당근, 콩나물, 버섯), 소고기 (선택 사항), 계란 프라이, 고추장, 참기름.',
-                recipeLink: 'https://www.maangchi.com/recipe/bibimbap',
-                difficulty: '중간',
-                prepTime: '45분',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/960px-Bulgogi_2.jpg'
+                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/1280px-Dolsot-bibimbap.jpg'
             },
             {
                 name: 'Bulgogi (불고기)',
