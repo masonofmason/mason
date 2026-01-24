@@ -353,4 +353,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Start creating images at random intervals, 3x more frequently
     setInterval(createFloatingImage, getRandom(160, 830)); // Every 0.16 to 0.83 seconds for 3x density
+
+    // Attempt to play background music
+    const backgroundMusic = document.getElementById('background-music');
+    if (backgroundMusic) {
+        // Attempt to play, this might be blocked by browsers
+        backgroundMusic.play().catch(error => {
+            console.log('Autoplay was prevented:', error);
+            // Optionally, prompt user to interact to play music
+            // For example:
+            // document.body.addEventListener('click', () => {
+            //     backgroundMusic.play();
+            // }, { once: true });
+        });
+    }
 });
