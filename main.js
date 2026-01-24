@@ -130,7 +130,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/bibimbap',
                 difficulty: '중간',
                 prepTime: '45분',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/1280px-Dolsot-bibimbap.jpg'
+                imageUrl: 'images/bibimbap.jpg'
             },
             {
                 name: 'Bulgogi (불고기)',
@@ -139,7 +139,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/bulgogi',
                 difficulty: '쉬움',
                 prepTime: '30분 (재움 시간 포함)',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/960px-Bulgogi_2.jpg'
+                imageUrl: 'images/bulgogi.jpg'
             },
             {
                 name: 'Kimchi Jjigae (김치찌개)',
@@ -148,7 +148,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/kimchi-jjigae',
                 difficulty: '중간',
                 prepTime: '35분',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Korean_stew_dish_-_Kimchi-jjigae_Kimchi_Stew_2019_%2801%29.jpg/960px-Korean_stew_dish_-_Kimchi-jjigae_Kimchi_Stew_2019_%2801%29.jpg'
+                imageUrl: 'images/Kimchijjigae.jpg'
             },
             {
                 name: 'Tteokbokki (떡볶이)',
@@ -157,7 +157,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/tteokbokki',
                 difficulty: '쉬움',
                 prepTime: '25분',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tteokbokki.JPG/1280px-Tteokbokki.JPG'
+                imageUrl: 'images/Tteokbokki.jpg'
             },
             {
                 name: 'Samgyeopsal (삼겹살)',
@@ -166,7 +166,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/samgyeopsal-gui',
                 difficulty: '쉬움',
                 prepTime: '20분',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Korean_barbecue-Samgyeopsal-08.jpg/1280px-Korean_barbecue-Samgyeopsal-08.jpg'
+                imageUrl: 'images/Samgyeopsal.jpg'
             },
             {
                 name: 'Japchae (잡채)',
@@ -175,7 +175,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/japchae',
                 difficulty: '중간',
                 prepTime: '50분',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg/2560px-Polish_Korean_Cuisine_and_Culture_Exchanges_Gradmother%E2%80%99s_Recipes_05.jpg'
+                imageUrl: 'images/jabchae.jpg'
             },
             {
                 name: 'Kimchi Bokkeumbap (김치볶음밥)',
@@ -184,7 +184,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/kimchi-bokkeumbap',
                 difficulty: '쉬움',
                 prepTime: '20분',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Kimchi_fried_rice.jpg/1280px-Kimchi_fried_rice.jpg'
+                imageUrl: 'images/Kimchi_fried_rice.jpg'
             },
             {
                 name: 'Sundubu Jjigae (순두부찌개)',
@@ -193,7 +193,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/sundubu-jjigae',
                 difficulty: '중간',
                 prepTime: '30분',
-                imageUrl: 'https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202108/25/0e57ae5e-f672-4551-aec0-19c6a523b010.jpg'
+                imageUrl: 'images/sundubujjiage.jpg'
             },
             {
                 name: 'Haemul Pajeon (해물파전)',
@@ -202,7 +202,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/haemul-pajeon',
                 difficulty: '중간',
                 prepTime: '40분',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Korean_pancake-Pajeon-06.jpg/500px-Korean_pancake-Pajeon-06.jpg'
+                imageUrl: 'images/HaemulPajeon.jpg'
             },
             {
                 name: 'Gyeran Mari (계란말이)',
@@ -211,7 +211,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/gyeran-mari',
                 difficulty: '쉬움',
                 prepTime: '15분',
-                imageUrl: 'https://img1.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202509/06/551416-wlf1uqJ/20250906020002496yqeh.jpg'
+                imageUrl: 'images/gyeranmari.jpg'
             },
             {
                 name: 'Kimchi Jeon (김치전)',
@@ -220,7 +220,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/kimchijeon',
                 difficulty: '쉬움',
                 prepTime: '25분',
-                imageUrl: 'https://www.lampcook.com/wi_files/food_local/2217.jpg'
+                imageUrl: 'images/Kimchijeon.jpg'
             },
             {
                 name: 'Gimbap (김밥)',
@@ -229,7 +229,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/gimbap',
                 difficulty: '중간',
                 prepTime: '1시간',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Gimbap_%28pixabay%29.jpg/1280px-Gimbap_%28pixabay%29.jpg'
+                imageUrl: 'images/Gimbap.jpg'
             },
             {
                 name: 'Yukgaejang (육개장)',
@@ -238,7 +238,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/yukgaejang',
                 difficulty: '어려움',
                 prepTime: '2시간 이상',
-                imageUrl: 'https://m.thesoupmall.com/web/product/big/202102/b8d7e6960689289de4c4a1c85f4439dc.jpg'
+                imageUrl: 'images/yukgaejang.jpg'
             },
             {
                 name: 'Galbi (갈비)',
@@ -247,7 +247,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/la-galbi',
                 difficulty: '중간',
                 prepTime: '40분 (재움 시간 포함)',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/%EB%8F%BC%EC%A7%80%EA%B0%88%EB%B9%84_%EC%82%AC%EC%A7%842.jpg/500px-%EB%8F%BC%EC%A7%80%EA%B0%88%EB%B9%84_%EC%82%AC%EC%A7%842.jpg'
+                imageUrl: 'images/galbi.jpg'
             },
             {
                 name: 'Jjajangmyeon (짜장면)',
@@ -256,7 +256,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/jjajangmyeon',
                 difficulty: '중간',
                 prepTime: '50분',
-                imageUrl: 'https://m.health.chosun.com/site/data/img_dir/2024/10/07/2024100701663_0.jpg'
+                imageUrl: 'images/jjajangmyeon.jpg'
             }
         ];
     
