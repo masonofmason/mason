@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34495E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A252F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bowlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F39C12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D35400;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#BDC3C7;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ECF0F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#95A5A6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="50" cy="50" r="48" fill="url(#bgGrad)" stroke="#ffffff" stroke-width="1.5" opacity="0.9"/>
+  
+  <path d="M33 53 Q33 78 50 78 T67 53" fill="#000" opacity="0.2" />
+  <path d="M30 50 Q30 75 50 75 T70 50" fill="url(#bowlGrad)" />
+  <rect x="30" y="45" width="40" height="6" rx="3" fill="#F39C12" />
+  
+  <g stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8">
+    <path d="M43 33 Q45 28 43 23" />
+    <path d="M50 36 Q52 31 50 26" />
+    <path d="M57 33 Q59 28 57 23" />
+  </g>
+  
+  <g fill="url(#silverGrad)">
+    <ellipse cx="18" cy="42" rx="6" ry="9" />
+    <rect x="16" y="50" width="4" height="25" rx="2" />
+  </g>
+
+  <g fill="url(#silverGrad)">
+    <path d="M76 33 v12 h8 v-12 h-2 v10 h-1 v-10 h-2 v10 h-1 v-10 z" />
+    <rect x="78" y="45" width="4" height="30" rx="2" />
+  </g>
+  
+  <path d="M44 61 Q50 68 56 61" stroke="#A04000" stroke-width="3" fill="none" stroke-linecap="round" />
+</svg>  
