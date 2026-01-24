@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://masonofmason.github.io/mason/sitemap.xml
+Sitemap: https://mason-td8.pages.dev/sitemap.xml
