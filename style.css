@@ -15,12 +15,7 @@
 body {
     margin: 0;
     font-family: 'Roboto', -apple-system, BlinkMacMacSystemFont, 'Segoe UI', Arial, sans-serif;
-    background-color: var(--background-light); /* Fallback color */
-    background-image: url('../images/people.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center; /* Center the image */
+    background-color: var(--background-light);
     color: var(--text-light);
     display: flex;
     flex-direction: column;
