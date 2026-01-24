@@ -129,7 +129,7 @@ class DinnerGenerator extends HTMLElement {
                 ingredients: '밥, 다양한 양념 채소 (시금치, 당근, 콩나물, 버섯), 소고기 (선택 사항), 계란 프라이, 고추장, 참기름.',
                 recipeLink: 'https://www.maangchi.com/recipe/bibimbap',
                 difficulty: '중간',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/B/Bi/Bibimbap_mixed.jpg/500px-Bibimbap_mixed.jpg'
+                imageUrl: 'https://live.staticflickr.com/124/337816110_35dfcbed73_o.jpg'
             },
             {
                 name: 'Bulgogi (불고기)',
@@ -255,7 +255,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/jjajangmyeon',
                 difficulty: '중간',
                 prepTime: '50분',
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Korean.cuisine-Jajangmyeon-01.jpg/800px-Korean.cuisine-Jajangmyeon-01.jpg'
+                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Korean_black_bean_noodle_dish-Jaengban_Jajangmyeon-01.jpg'
             }
         ];
     
