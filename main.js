@@ -220,7 +220,7 @@ class DinnerGenerator extends HTMLElement {
                 recipeLink: 'https://www.maangchi.com/recipe/kimchijeon',
                 difficulty: '쉬움',
                 prepTime: '25분',
-                imageUrl: 'images/Kimchijeon.jpg'
+                imageUrl: 'images/kimchijeon.jpg'
             },
             {
                 name: 'Gimbap (김밥)',
