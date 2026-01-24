@@ -164,6 +164,14 @@ body.dark-mode .blog-post h1 {
     color: var(--primary-color); /* Keep primary color for titles */
 }
 
+.blog-post h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+
 .container form label {
     display: block;
     margin-bottom: 0.5rem;
@@ -423,3 +431,84 @@ body.dark-mode .blog-post ul {
     }
 }
 
+/* Social Sharing Styles */
+.social-share {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color-light);
+    text-align: center;
+}
+
+body.dark-mode .social-share {
+    border-top-color: var(--border-color-dark);
+}
+
+.social-share h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+body.dark-mode .social-share h3 {
+    color: var(--text-dark);
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.share-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none; /* Ensure button styles are consistent */
+    font-size: 0.95rem;
+}
+
+.share-button.facebook {
+    background-color: #1877F2;
+}
+
+.share-button.facebook:hover {
+    background-color: #166FE5;
+}
+
+.share-button.twitter {
+    background-color: #1DA1F2;
+}
+
+.share-button.twitter:hover {
+    background-color: #1A90DA;
+}
+
+.share-button.copy-link {
+    background-color: #6c757d;
+}
+
+.share-button.copy-link:hover {
+    background-color: #5a6268;
+}
+
+.instagram-note {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 1rem;
+}
+
+body.dark-mode .instagram-note {
+    color: #bdc3c7;
+}
+
+/* Optional: Add icons if desired with :before pseudo-elements and font-awesome/svg */
+/* For example:
+.share-button.facebook:before { content: "\f39e"; font-family: "Font Awesome 5 Brands"; margin-right: 0.5rem; }
+*/

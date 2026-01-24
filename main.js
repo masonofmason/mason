@@ -279,3 +279,13 @@ class DinnerGenerator extends HTMLElement {
 }
 
 customElements.define('dinner-generator', DinnerGenerator);
+
+// Function to copy URL to clipboard
+function copyToClipboard(url) {
+    navigator.clipboard.writeText(url).then(function() {
+        alert('링크가 클립보드에 복사되었습니다!');
+    }).catch(function(err) {
+        console.error('클립보드 복사 실패:', err);
+        alert('링크 복사에 실패했습니다.');
+    });
+}
