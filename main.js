@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             img.src = HEART_IMAGE_URL;
             img.alt = 'Heart Image';
-            img.style.animation = 'none'; // Stop current animations
+            img.style.animation = ''; // Clear animation property
             img.style.transition = 'opacity 0.2s ease-out'; // Fast fade for heart
             img.style.opacity = '1'; // Make heart more prominent temporarily
 
