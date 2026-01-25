@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(script);
 
     // Only the heart image will be used
-    const HEART_IMAGE_URL = 'images/green_heart.png'; 
+    const HEART_IMAGE_URL = '/images/green_heart.png'; 
 
     const floatingBackground = document.getElementById('floating-background');
 
