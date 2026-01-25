@@ -427,20 +427,25 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Draggable Button Logic ---
         let isDragging = false;
         let hasMoved = false;
-        let offsetX, offsetY;
+        let offsetX, offsetY, startX, startY;
+        const moveThreshold = 10; // Pixels
 
         // Function to handle the start of a drag event (both mouse and touch)
         const dragStart = (e) => {
-            hasMoved = false; // Reset move status on new drag start
+            hasMoved = false;
             isDragging = true;
-            translateButton.style.cursor = 'grabbing';
-            translateButton.style.transition = 'none'; // Disable transitions while dragging
-
-            const rect = translateButton.getBoundingClientRect();
+            
             const event = e.type === 'touchstart' ? e.touches[0] : e;
             
-            offsetX = event.clientX - rect.left;
-            offsetY = event.clientY - rect.top;
+            startX = event.clientX;
+            startY = event.clientY;
+
+            const rect = translateButton.getBoundingClientRect();
+            offsetX = startX - rect.left;
+            offsetY = startY - rect.top;
+            
+            translateButton.style.cursor = 'grabbing';
+            translateButton.style.transition = 'none';
 
             // Prevent default behavior like text selection or page scrolling
             e.preventDefault();
@@ -449,45 +454,55 @@ document.addEventListener('DOMContentLoaded', () => {
         // Function to handle the drag movement
         const dragMove = (e) => {
             if (!isDragging) return;
-            hasMoved = true; // If move happens, set flag
 
             const event = e.type === 'touchmove' ? e.touches[0] : e;
+            const currentX = event.clientX;
+            const currentY = event.clientY;
+
+            // Check if the movement exceeds the threshold
+            if (!hasMoved) {
+                const deltaX = Math.abs(currentX - startX);
+                const deltaY = Math.abs(currentY - startY);
+                if (Math.sqrt(deltaX * deltaX + deltaY * deltaY) > moveThreshold) {
+                    hasMoved = true;
+                }
+            }
             
-            let newX = event.clientX - offsetX;
-            let newY = event.clientY - offsetY;
+            // Only move the button if it's considered a drag
+            if (hasMoved) {
+                let newX = currentX - offsetX;
+                let newY = currentY - offsetY;
 
-            // Constrain the button within the viewport
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-            const buttonWidth = translateButton.offsetWidth;
-            const buttonHeight = translateButton.offsetHeight;
+                // Constrain the button within the viewport
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+                const buttonWidth = translateButton.offsetWidth;
+                const buttonHeight = translateButton.offsetHeight;
 
-            if (newX < 0) newX = 0;
-            if (newY < 0) newY = 0;
-            if (newX + buttonWidth > viewportWidth) newX = viewportWidth - buttonWidth;
-            if (newY + buttonHeight > viewportHeight) newY = viewportHeight - buttonHeight;
+                if (newX < 0) newX = 0;
+                if (newY < 0) newY = 0;
+                if (newX + buttonWidth > viewportWidth) newX = viewportWidth - buttonWidth;
+                if (newY + buttonHeight > viewportHeight) newY = viewportHeight - buttonHeight;
 
-            translateButton.style.left = `${newX}px`;
-            translateButton.style.top = `${newY}px`;
-            translateButton.style.right = 'auto'; // Override the 'right' property from CSS
-            translateButton.style.bottom = 'auto';
+                translateButton.style.left = `${newX}px`;
+                translateButton.style.top = `${newY}px`;
+                translateButton.style.right = 'auto'; // Override the 'right' property from CSS
+                translateButton.style.bottom = 'auto';
+            }
         };
 
         // Function to handle the end of a drag event
         const dragEnd = () => {
-            if (!isDragging) return; // Exit if not dragging
+            if (!isDragging) return;
 
             isDragging = false;
             translateButton.style.cursor = 'grab';
-            translateButton.style.transition = 'background-color 0.3s ease, transform 0.2s ease'; // Re-enable transitions
+            translateButton.style.transition = 'background-color 0.3s ease, transform 0.2s ease';
 
-            // If the button hasn't moved, treat it as a click
             if (!hasMoved) {
                 doGoogleTranslate();
-            }
-
-            // Save the new position to localStorage only if it moved
-            if (hasMoved) {
+            } else {
+                // Save the new position to localStorage only if it moved
                 localStorage.setItem('translateButtonLeft', translateButton.style.left);
                 localStorage.setItem('translateButtonTop', translateButton.style.top);
             }
