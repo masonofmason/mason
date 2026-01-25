@@ -342,9 +342,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const HEART_IMAGE_URL = '/images/green_heart.png'; 
 
     const floatingBackground = document.getElementById('floating-background');
+    const activeHeartsData = []; // Array to store data of active hearts
+    let heartIdCounter = 0; // Unique ID for each heart
 
     function getRandom(min, max) {
         return Math.random() * (max - min) + min;
+    }
+
+    // Function to check for overlap between two rectangles
+    function checkOverlap(rect1, rect2) {
+        return rect1.left < rect2.right &&
+               rect1.right > rect2.left &&
+               rect1.top < rect2.bottom &&
+               rect1.bottom > rect2.top;
     }
 
     function createFloatingImage() {
@@ -354,50 +364,111 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = HEART_IMAGE_URL;
         img.alt = 'Floating Heart Image';
         
-        // Random size between 50px and 150px (adjust as needed)
-        const size = getRandom(50, 150); 
+        const size = getRandom(50, 150); // Random size in pixels
         img.style.width = `${size}px`;
-        img.style.height = `${size}px`; // Keep aspect ratio for square heart
-        img.style.objectFit = 'contain'; // Ensure heart image fits within bounds
+        img.style.height = `${size}px`;
+        img.style.objectFit = 'contain';
 
-        // Random starting position (off-screen or on-screen)
-        img.style.left = `${getRandom(-20, 100)}vw`; 
-        img.style.top = `${getRandom(-20, 100)}vh`;
+        let positionFound = false;
+        let retries = 0;
+        const maxRetries = 10; // Max attempts to find a non-overlapping position
+        let randomLeftVw, randomTopVh;
 
-        // Random animation duration for variety
-        const animationDuration = getRandom(15, 30); // 15 to 30 seconds for floating
-        img.style.animationDuration = `float ${animationDuration}s infinite linear`; // Only float animation
-        
-        // Random initial opacity, between 0.3 and 0.7
-        img.style.opacity = getRandom(0.3, 0.7); 
-        img.style.pointerEvents = 'none'; // No pointer events
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        let heartPixelWidth = size; // Assuming size is the width/height in pixels
+        let heartPixelHeight = size;
+
+        let newHeartRect = {};
+
+        while (!positionFound && retries < maxRetries) {
+            randomLeftVw = getRandom(-20, 100); // in vw
+            randomTopVh = getRandom(-20, 100); // in vh
+
+            // Convert vw/vh to approximate pixels for collision detection
+            const newHeartLeftPx = (randomLeftVw / 100) * viewportWidth;
+            const newHeartTopPx = (randomTopVh / 100) * viewportHeight;
+
+            newHeartRect = {
+                left: newHeartLeftPx,
+                top: newHeartTopPx,
+                right: newHeartLeftPx + heartPixelWidth,
+                bottom: newHeartTopPx + heartPixelHeight
+            };
+
+            let overlaps = false;
+            for (const existingHeart of activeHeartsData) {
+                if (checkOverlap(newHeartRect, existingHeart.rect)) {
+                    overlaps = true;
+                    break;
+                }
+            }
+
+            if (!overlaps) {
+                positionFound = true;
+            } else {
+                retries++;
+            }
+        }
+
+        if (!positionFound) {
+            // If no non-overlapping position found after max retries, skip creating this heart
+            return;
+        }
+
+        img.style.left = `${randomLeftVw}vw`;
+        img.style.top = `${randomTopVh}vh`;
+        img.style.animationDuration = `float ${getRandom(15, 30)}s infinite linear`;
+        img.style.opacity = getRandom(0.3, 0.7);
+        img.style.pointerEvents = 'none';
 
         floatingBackground.appendChild(img);
 
-        // Random lifespan for the heart image before it disappears
-        const lifeSpan = getRandom(8000, 20000); // 8 to 20 seconds
-        
-        // Set a timeout for the heart to disappear
+        const heartData = {
+            id: heartIdCounter++,
+            element: img,
+            rect: newHeartRect // Store the calculated pixel rectangle for collision detection
+        };
+        activeHeartsData.push(heartData);
+
+        const lifeSpan = getRandom(8000, 15000); // Heart lives for 8-15 seconds
+
         setTimeout(() => {
-            if (img.parentNode === floatingBackground) { // Ensure image is still in DOM
-                img.style.transition = 'opacity 3s ease-out'; // Slow fade out
-                img.style.opacity = '0'; // Start fade out effect
-                img.addEventListener('transitionend', () => img.remove(), { once: true });
+            if (img.parentNode === floatingBackground) {
+                img.style.transition = 'opacity 3s ease-out'; // Fade out transition
+                img.style.opacity = '0'; // Start fade out
+                img.addEventListener('transitionend', () => {
+                    img.remove();
+                    // Remove from tracking array after removal from DOM
+                    const index = activeHeartsData.findIndex(h => h.id === heartData.id);
+                    if (index > -1) {
+                        activeHeartsData.splice(index, 1);
+                    }
+                }, { once: true });
             } else {
-                img.remove(); // If it's already removed, ensure it's fully gone
+                // If somehow already removed (e.g. animationend fired early), just remove from array
+                const index = activeHeartsData.findIndex(h => h.id === heartData.id);
+                if (index > -1) {
+                    activeHeartsData.splice(index, 1);
+                }
             }
         }, lifeSpan);
 
-        // Clean up if it floats out of view or animation ends prematurely
-        img.addEventListener('animationend', () => {
-            if (img.parentNode === floatingBackground) {
-                img.remove();
+        // Fallback for removing from array if animationend fires before timeout (e.g. user navigates)
+        img.addEventListener('animationend', (event) => {
+            // Only remove if it's the 'float' animation, not 'fadeOut' if defined elsewhere
+            if (event.animationName === 'float') {
+                const index = activeHeartsData.findIndex(h => h.id === heartData.id);
+                if (index > -1) {
+                    activeHeartsData.splice(index, 1);
+                }
             }
-        });
+        }, { once: true });
     }
 
-    // Start creating images at random intervals, 3x more frequently
-    setInterval(createFloatingImage, getRandom(160, 830)); // Every 0.16 to 0.83 seconds for 3x density
+    // Start creating images at a reduced frequency to minimize overlap
+    setInterval(createFloatingImage, getRandom(500, 1500)); // Every 0.5 to 1.5 seconds
 
     // Attempt to play background music
     const backgroundMusic = document.getElementById('background-music');
