@@ -437,6 +437,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.button === 0) { // 0 for left mouse button
                 isDragging = true;
                 translateButton.style.cursor = 'grabbing';
+                
+                // --- Fix 1: Enable horizontal movement by removing 'right' constraint ---
+                translateButton.style.right = 'auto'; // Remove static right constraint
+                
+                // --- Fix 2: Prevent size changes by locking current dimensions ---
+                // Get current computed dimensions
+                const computedStyle = window.getComputedStyle(translateButton);
+                translateButton.style.width = computedStyle.width;
+                translateButton.style.height = computedStyle.height;
+
                 // Calculate offset relative to the button's current position
                 const rect = translateButton.getBoundingClientRect();
                 offsetX = e.clientX - rect.left;
