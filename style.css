@@ -69,7 +69,7 @@ body.dark-mode {
     color: var(--text-dark);
 }
 
-.container, .blog-posts, .blog-post {
+.container, .blog-posts, .blog-post, dinner-generator {
     width: 100%;
     max-width: 960px; /* Increased max-width for better content display */
     margin: 2rem auto;

@@ -10,12 +10,10 @@ class DinnerGenerator extends HTMLElement {
                     align-items: center;
                     justify-content: center;
                     background-color: #fff;
-                    padding: 2rem;
                     border-radius: 10px;
                     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
                     transition: background-color 0.3s;
                     width: 100%; /* Make it fully responsive */
-                    margin: 2rem auto; /* Center the container */
                     text-align: center;
                     height: auto; /* Ensure visible height */
                 }
@@ -418,8 +416,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle translate button click
     const translateButton = document.getElementById('translate-button');
     if (translateButton) {
-        translateButton.addEventListener('click', doGoogleTranslate);
-
         // Set initial button text based on current translation state
         const isTranslatedToEnglish = document.cookie.includes('googtrans=/ko/en') || document.querySelector('html').lang === 'en';
         if (isTranslatedToEnglish) {
@@ -430,10 +426,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Draggable Button Logic ---
         let isDragging = false;
+        let hasMoved = false;
         let offsetX, offsetY;
 
         // Function to handle the start of a drag event (both mouse and touch)
         const dragStart = (e) => {
+            hasMoved = false; // Reset move status on new drag start
             isDragging = true;
             translateButton.style.cursor = 'grabbing';
             translateButton.style.transition = 'none'; // Disable transitions while dragging
@@ -451,6 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Function to handle the drag movement
         const dragMove = (e) => {
             if (!isDragging) return;
+            hasMoved = true; // If move happens, set flag
 
             const event = e.type === 'touchmove' ? e.touches[0] : e;
             
@@ -476,12 +475,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Function to handle the end of a drag event
         const dragEnd = () => {
-            if (isDragging) {
-                isDragging = false;
-                translateButton.style.cursor = 'grab';
-                translateButton.style.transition = 'background-color 0.3s ease, transform 0.2s ease'; // Re-enable transitions
+            if (!isDragging) return; // Exit if not dragging
 
-                // Save the new position to localStorage
+            isDragging = false;
+            translateButton.style.cursor = 'grab';
+            translateButton.style.transition = 'background-color 0.3s ease, transform 0.2s ease'; // Re-enable transitions
+
+            // If the button hasn't moved, treat it as a click
+            if (!hasMoved) {
+                doGoogleTranslate();
+            }
+
+            // Save the new position to localStorage only if it moved
+            if (hasMoved) {
                 localStorage.setItem('translateButtonLeft', translateButton.style.left);
                 localStorage.setItem('translateButtonTop', translateButton.style.top);
             }
