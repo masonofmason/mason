@@ -304,30 +304,25 @@ function googleTranslateElementInit() {
 function doGoogleTranslate() {
     // Check if the Google Translate object is available
     if (typeof google !== 'undefined' && google.translate && google.translate.TranslateElement) {
-        const translateElement = document.getElementById('google_translate_element');
-        if (!translateElement) {
-            // Create a temporary div to host the translate element if it doesn't exist
-            const tempDiv = document.createElement('div');
-            tempDiv.id = 'google_translate_element';
-            tempDiv.style.display = 'none'; // Hide it
-            document.body.appendChild(tempDiv);
-        }
+        const translateButton = document.getElementById('translate-button');
+        // Check for Google Translate cookie or html lang attribute to determine current translation state
+        // The googtrans cookie is set by Google Translate to indicate the current translation.
+        const isTranslatedToEnglish = document.cookie.includes('googtrans=/ko/en') || document.querySelector('html').lang === 'en';
         
-        // This will reload the page with translation. A more seamless way might involve cookies.
-        // For direct translation without full reload, it's more complex and requires Google's widget to be visible.
-        // A common pattern is to just reload with ?tl=en parameter.
-
-        // If the page is already translated, toggle back to original language (ko)
-        const currentLang = document.querySelector('html').lang;
-        if (currentLang === 'en' || window.location.href.includes('googtrans(ko|en)')) {
-            // Remove the translation cookie and reload
-            document.cookie = 'googtrans=/ko/en; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
-            document.cookie = 'googtrans; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; domain=' + window.location.hostname;
+        if (isTranslatedToEnglish) {
+            // Revert to original language (Korean)
+            document.cookie = 'googtrans=/ko/en; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/'; // Expire translation cookie
+            document.cookie = 'googtrans; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; domain=' + window.location.hostname; // Also try to expire for domain
+            if (translateButton) {
+                translateButton.textContent = 'Translate to English';
+            }
             window.location.reload();
         } else {
-            // Trigger translation to English
-            // The widget adds cookies. We can directly manipulate the cookie for a full page reload.
-            document.cookie = 'googtrans=/ko/en; path=/';
+            // Translate to English
+            document.cookie = 'googtrans=/ko/en; path=/'; // Set translation cookie
+            if (translateButton) {
+                translateButton.textContent = 'Translate to Korean';
+            }
             window.location.reload();
         }
     } else {
@@ -424,6 +419,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const translateButton = document.getElementById('translate-button');
     if (translateButton) {
         translateButton.addEventListener('click', doGoogleTranslate);
+
+        // Set initial button text based on current translation state
+        const isTranslatedToEnglish = document.cookie.includes('googtrans=/ko/en') || document.querySelector('html').lang === 'en';
+        if (isTranslatedToEnglish) {
+            translateButton.textContent = 'Translate to Korean';
+        } else {
+            translateButton.textContent = 'Translate to English';
+        }
 
         // --- Draggable Button Logic ---
         let isDragging = false;
