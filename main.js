@@ -432,62 +432,81 @@ document.addEventListener('DOMContentLoaded', () => {
         let isDragging = false;
         let offsetX, offsetY;
 
-        translateButton.addEventListener('mousedown', (e) => {
-            // Only allow dragging with the left mouse button
-            if (e.button === 0) { // 0 for left mouse button
-                isDragging = true;
-                translateButton.style.cursor = 'grabbing';
-                
-                // --- Fix 1: Enable horizontal movement by removing 'right' constraint ---
-                translateButton.style.right = 'auto'; // Remove static right constraint
-                
-                // --- Fix 2: Prevent size changes by locking current dimensions ---
-                // Get current computed dimensions
-                const computedStyle = window.getComputedStyle(translateButton);
-                translateButton.style.width = computedStyle.width;
-                translateButton.style.height = computedStyle.height;
+        // Function to handle the start of a drag event (both mouse and touch)
+        const dragStart = (e) => {
+            isDragging = true;
+            translateButton.style.cursor = 'grabbing';
+            translateButton.style.transition = 'none'; // Disable transitions while dragging
 
-                // Calculate offset relative to the button's current position
-                const rect = translateButton.getBoundingClientRect();
-                offsetX = e.clientX - rect.left;
-                offsetY = e.clientY - rect.top;
+            const rect = translateButton.getBoundingClientRect();
+            const event = e.type === 'touchstart' ? e.touches[0] : e;
+            
+            offsetX = event.clientX - rect.left;
+            offsetY = event.clientY - rect.top;
 
-                // Ensure button is positioned absolutely for dragging
-                if (translateButton.style.position !== 'absolute') {
-                    translateButton.style.position = 'absolute';
-                }
-            }
-        });
+            // Prevent default behavior like text selection or page scrolling
+            e.preventDefault();
+        };
 
-        document.addEventListener('mousemove', (e) => {
+        // Function to handle the drag movement
+        const dragMove = (e) => {
             if (!isDragging) return;
 
-            // Update button position
-            translateButton.style.left = `${e.clientX - offsetX}px`;
-            translateButton.style.top = `${e.clientY - offsetY}px`;
-        });
+            const event = e.type === 'touchmove' ? e.touches[0] : e;
+            
+            let newX = event.clientX - offsetX;
+            let newY = event.clientY - offsetY;
 
-        document.addEventListener('mouseup', () => {
+            // Constrain the button within the viewport
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            const buttonWidth = translateButton.offsetWidth;
+            const buttonHeight = translateButton.offsetHeight;
+
+            if (newX < 0) newX = 0;
+            if (newY < 0) newY = 0;
+            if (newX + buttonWidth > viewportWidth) newX = viewportWidth - buttonWidth;
+            if (newY + buttonHeight > viewportHeight) newY = viewportHeight - buttonHeight;
+
+            translateButton.style.left = `${newX}px`;
+            translateButton.style.top = `${newY}px`;
+            translateButton.style.right = 'auto'; // Override the 'right' property from CSS
+            translateButton.style.bottom = 'auto';
+        };
+
+        // Function to handle the end of a drag event
+        const dragEnd = () => {
             if (isDragging) {
                 isDragging = false;
                 translateButton.style.cursor = 'grab';
+                translateButton.style.transition = 'background-color 0.3s ease, transform 0.2s ease'; // Re-enable transitions
+
                 // Save the new position to localStorage
                 localStorage.setItem('translateButtonLeft', translateButton.style.left);
                 localStorage.setItem('translateButtonTop', translateButton.style.top);
             }
-        });
+        };
+
+        // Add both mouse and touch event listeners
+        translateButton.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', dragMove);
+        document.addEventListener('mouseup', dragEnd);
+
+        translateButton.addEventListener('touchstart', dragStart, { passive: false });
+        document.addEventListener('touchmove', dragMove, { passive: false });
+        document.addEventListener('touchend', dragEnd);
+
 
         // Load saved position on page load
         const savedLeft = localStorage.getItem('translateButtonLeft');
         const savedTop = localStorage.getItem('translateButtonTop');
         if (savedLeft && savedTop) {
-            translateButton.style.position = 'absolute'; // Must be absolute to apply saved position
             translateButton.style.left = savedLeft;
             translateButton.style.top = savedTop;
-        } else {
-             // If no saved position, ensure it's fixed (default for action-button CSS)
-             translateButton.style.position = 'fixed';
+            translateButton.style.right = 'auto';
+            translateButton.style.bottom = 'auto';
         }
+        
         translateButton.style.cursor = 'grab'; // Default cursor for draggable button
     }
 });
