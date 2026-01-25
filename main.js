@@ -290,9 +290,61 @@ function copyToClipboard(url) {
     });
 }
 
+// Google Translate API initialization
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'ko', // Source language
+        includedLanguages: 'en', // Target language
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false // Prevent the default widget from showing
+    }, 'google_translate_element');
+}
+
+// Function to trigger Google Translate
+function doGoogleTranslate() {
+    // Check if the Google Translate object is available
+    if (typeof google !== 'undefined' && google.translate && google.translate.TranslateElement) {
+        const translateElement = document.getElementById('google_translate_element');
+        if (!translateElement) {
+            // Create a temporary div to host the translate element if it doesn't exist
+            const tempDiv = document.createElement('div');
+            tempDiv.id = 'google_translate_element';
+            tempDiv.style.display = 'none'; // Hide it
+            document.body.appendChild(tempDiv);
+        }
+        
+        // This will reload the page with translation. A more seamless way might involve cookies.
+        // For direct translation without full reload, it's more complex and requires Google's widget to be visible.
+        // A common pattern is to just reload with ?tl=en parameter.
+
+        // If the page is already translated, toggle back to original language (ko)
+        const currentLang = document.querySelector('html').lang;
+        if (currentLang === 'en' || window.location.href.includes('googtrans(ko|en)')) {
+            // Remove the translation cookie and reload
+            document.cookie = 'googtrans=/ko/en; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+            document.cookie = 'googtrans; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; domain=' + window.location.hostname;
+            window.location.reload();
+        } else {
+            // Trigger translation to English
+            // The widget adds cookies. We can directly manipulate the cookie for a full page reload.
+            document.cookie = 'googtrans=/ko/en; path=/';
+            window.location.reload();
+        }
+    } else {
+        console.warn('Google Translate API not loaded yet or unavailable.');
+        alert('Translation service is not ready. Please try again in a moment.');
+    }
+}
 
 // Floating background images logic
 document.addEventListener('DOMContentLoaded', () => {
+    // Dynamic script loading for Google Translate API
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    document.head.appendChild(script);
+
     // Only the heart image will be used
     const HEART_IMAGE_URL = 'images/green_heart.png'; 
 
@@ -371,12 +423,55 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle translate button click
     const translateButton = document.getElementById('translate-button');
     if (translateButton) {
-        translateButton.addEventListener('click', () => {
-            alert('Translation functionality will be implemented here. Please specify the desired translation mechanism (e.g., Google Translate widget, switching to pre-translated content, or browser\'s built-in feature).');
-            // Placeholder for translation logic
-            // Example: Trigger browser's translation (not directly controllable via JS)
-            // Example: Link to Google Translate for the current page
-            // window.open('https://translate.google.com/translate?sl=auto&tl=en&u=' + encodeURIComponent(window.location.href));
+        translateButton.addEventListener('click', doGoogleTranslate);
+
+        // --- Draggable Button Logic ---
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        translateButton.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            translateButton.style.cursor = 'grabbing';
+            // Calculate offset relative to the button's current position
+            const rect = translateButton.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+
+            // Ensure button is positioned absolutely for dragging
+            if (translateButton.style.position !== 'absolute') {
+                translateButton.style.position = 'absolute';
+            }
         });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+
+            // Update button position
+            translateButton.style.left = `${e.clientX - offsetX}px`;
+            translateButton.style.top = `${e.clientY - offsetY}px`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                translateButton.style.cursor = 'grab';
+                // Save the new position to localStorage
+                localStorage.setItem('translateButtonLeft', translateButton.style.left);
+                localStorage.setItem('translateButtonTop', translateButton.style.top);
+            }
+        });
+
+        // Load saved position on page load
+        const savedLeft = localStorage.getItem('translateButtonLeft');
+        const savedTop = localStorage.getItem('translateButtonTop');
+        if (savedLeft && savedTop) {
+            translateButton.style.position = 'absolute'; // Must be absolute to apply saved position
+            translateButton.style.left = savedLeft;
+            translateButton.style.top = savedTop;
+        } else {
+             // If no saved position, ensure it's fixed (default for action-button CSS)
+             translateButton.style.position = 'fixed';
+        }
+        translateButton.style.cursor = 'grab'; // Default cursor for draggable button
     }
 });
