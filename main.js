@@ -433,16 +433,19 @@ document.addEventListener('DOMContentLoaded', () => {
         let offsetX, offsetY;
 
         translateButton.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            translateButton.style.cursor = 'grabbing';
-            // Calculate offset relative to the button's current position
-            const rect = translateButton.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
+            // Only allow dragging with the left mouse button
+            if (e.button === 0) { // 0 for left mouse button
+                isDragging = true;
+                translateButton.style.cursor = 'grabbing';
+                // Calculate offset relative to the button's current position
+                const rect = translateButton.getBoundingClientRect();
+                offsetX = e.clientX - rect.left;
+                offsetY = e.clientY - rect.top;
 
-            // Ensure button is positioned absolutely for dragging
-            if (translateButton.style.position !== 'absolute') {
-                translateButton.style.position = 'absolute';
+                // Ensure button is positioned absolutely for dragging
+                if (translateButton.style.position !== 'absolute') {
+                    translateButton.style.position = 'absolute';
+                }
             }
         });
 
